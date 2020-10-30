@@ -11,9 +11,10 @@ The main paper is from (Cutter et al., 2015) It demonstrates moethods for automa
 This is an example of dataset image
 
 <p align="center">
-    <img src="images/Set2_DSCN2769.jpg" height="250px">
+    <img src="images/Set2_DSCN2769.jpg" height="450px">
 </p>
 
 This is some video from ROV which captured some fishes
 
-<iframe width="853" height="480" src="https://www.youtube.com/embed/VXXEuazupoM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![ROV-Video](images/rovvide.png)](https://youtu.be/VXXEuazupoM "ROV-Video")
+
