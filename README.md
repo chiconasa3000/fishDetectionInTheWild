@@ -1,4 +1,4 @@
-# fishDetectionInTheWild
+# FishDetectionInTheWild
 
 Fish detection using dataset NOAA
 
@@ -16,5 +16,11 @@ This is an example of dataset image
 
 This is some video from ROV which captured some fishes
 
-[![ROV-Video](images/rovvide.png)](https://youtu.be/VXXEuazupoM "ROV-Video")
+
+<p align="center">
+     <a href = 'hhttps://youtu.be/VXXEuazupoM'>
+        <img src = 'images/rovvideo.png' width = '600px' height = '388px'>
+     </a>
+</p>
+
 
