@@ -16,9 +16,4 @@ This is an example of dataset image
 
 This is some video from ROV which captured some fishes
 
-<p align="center">
-     <a href = 'https://youtu.be/VXXEuazupoM'>
-        <img src = 'images/Set2_DSCN2769.jpg' width = '500px' height = '288px'>
-     </a>
-</p>
-
+<iframe width="853" height="480" src="https://www.youtube.com/embed/VXXEuazupoM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
