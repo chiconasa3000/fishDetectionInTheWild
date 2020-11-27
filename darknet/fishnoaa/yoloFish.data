@@ -1,0 +1,5 @@
+classes = 1
+train = fishnoaa/noaa_train.txt
+valid = fishnoaa/noaa_test.txt
+names = fishnoaa/classesfish.names
+backup = fishnoaa/backups/
