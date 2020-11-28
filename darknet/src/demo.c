@@ -8,10 +8,22 @@
 #include "image.h"
 #include "demo.h"
 #include <sys/time.h>
+#include <stdio.h>
+
+#ifdef OPENCV
+
+#include "stdio.h"
+#include "stdlib.h"
+//#include "opencv2/opencv.hpp"
+#include "image.h"
+
+//using namespace cv;
+
+//extern "C" {
 
 #define DEMO 1
 
-#ifdef OPENCV
+//#ifdef OPENCV
 
 static char **demo_names;
 static image **demo_alphabet;
@@ -211,9 +223,11 @@ void demo(char *cfgfile, char *weightfile, float thresh, int cam_index, const ch
 
     if(filename){
         printf("video file: %s\n", filename);
-        cap = open_video_stream(filename, 0, 0, 0, 0);
+	int total = 1;
+        cap = open_video_stream(filename, 0, 0, 0, &total);
+	printf("frames Total: %i\n",total);
     }else{
-        cap = open_video_stream(0, cam_index, w, h, frames);
+        //cap = open_video_stream(0, cam_index, w, h, frames,0);
     }
 
     if(!cap) error("Couldn't connect to webcam.\n");
@@ -232,7 +246,11 @@ void demo(char *cfgfile, char *weightfile, float thresh, int cam_index, const ch
 
     demo_time = what_time_is_it_now();
 
-    while(!demo_done){
+    cv2.Size size = cv2.Size(400,400);
+    out = cv2.VideoWriter('videFish.avi',cv2.VideoWriter_fourcc(*'DIVX'),15,size);
+
+    int ii = 0;
+    while(ii<100){
         buff_index = (buff_index + 1) %3;
         if(pthread_create(&fetch_thread, 0, fetch_in_thread, 0)) error("Thread creation failed");
         if(pthread_create(&detect_thread, 0, detect_in_thread, 0)) error("Thread creation failed");
@@ -243,12 +261,17 @@ void demo(char *cfgfile, char *weightfile, float thresh, int cam_index, const ch
         }else{
             char name[256];
             sprintf(name, "%s_%08d", prefix, count);
-            save_image(buff[(buff_index + 1)%3], name);
+	    image im = buff[(buff_index + 1)%3];
+    	    cv2.Mat imgcv(im.h, im.w, CV_32FC1, im.data);
+	    out.write(imgcv) 
+            //save_image(buff[(buff_index + 1)%3], name);
         }
         pthread_join(fetch_thread, 0);
         pthread_join(detect_thread, 0);
         ++count;
+	ii++;
     }
+    out.release()
 }
 
 /*
@@ -340,10 +363,10 @@ pthread_join(detect_thread, 0);
 }
 }
 */
-#else
-void demo(char *cfgfile, char *weightfile, float thresh, int cam_index, const char *filename, char **names, int classes, int delay, char *prefix, int avg, float hier, int w, int h, int frames, int fullscreen)
-{
-    fprintf(stderr, "Demo needs OpenCV for webcam images.\n");
-}
-#endif
+//#else
+//void demo(char *cfgfile, char *weightfile, float thresh, int cam_index, const char *filename, char **names, int classes, int delay, char *prefix, int avg, float hier, int w, int h, int frames, int fullscreen)
+//{
+//    fprintf(stderr, "Demo needs OpenCV for webcam images.\n");
+//}
+//#endif
 

@@ -50,7 +50,7 @@ image mat_to_image(Mat m)
     return im;
 }
 
-void *open_video_stream(const char *f, int c, int w, int h, int fps)
+void *open_video_stream(const char *f, int c, int w, int h, int *fps)
 {
     VideoCapture *cap;
     if(f) cap = new VideoCapture(f);
@@ -58,7 +58,10 @@ void *open_video_stream(const char *f, int c, int w, int h, int fps)
     if(!cap->isOpened()) return 0;
     if(w) cap->set(CAP_PROP_FRAME_WIDTH, w);
     if(h) cap->set(CAP_PROP_FRAME_HEIGHT, w);
-    if(fps) cap->set(CAP_PROP_FPS, w);
+    //if(fps) cap->set(CAP_PROP_FPS, w);
+    if(fps){
+	    *fps = int(cap->get(CAP_PROP_FRAME_COUNT));
+    }
     return (void *) cap;
 }
 

@@ -19,7 +19,7 @@ This is some video from ROV which captured some fishes
 
 <p align="center">
      <a href = 'https://youtu.be/VXXEuazupoM'>
-        <img src = 'images/rovvideo.png' width = '600px' height = '388px'>
+        <img src = 'images/fishdetyolov3.gif' width = '600px' height = '388px'>
      </a>
 </p>
 
