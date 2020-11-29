@@ -360,5 +360,5 @@ pthread_join(detect_thread, 0);
 //{
 //    fprintf(stderr, "Demo needs OpenCV for webcam images.\n");
 //}
-//#endif
+#endif
 
