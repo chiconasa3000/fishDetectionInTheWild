@@ -271,7 +271,7 @@ void demo(char *cfgfile, char *weightfile, float thresh, int cam_index, const ch
         ++count;
 	ii++;
     }
-    out.release()
+    //out.release()
 }
 
 /*
