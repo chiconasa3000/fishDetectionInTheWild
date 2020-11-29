@@ -246,8 +246,8 @@ void demo(char *cfgfile, char *weightfile, float thresh, int cam_index, const ch
 
     demo_time = what_time_is_it_now();
 
-    cv2.Size size = cv2.Size(400,400);
-    out = cv2.VideoWriter('videFish.avi',cv2.VideoWriter_fourcc(*'DIVX'),15,size);
+    //cv2.Size size = cv2.Size(400,400);
+    //out = cv2.VideoWriter('videFish.avi',cv2.VideoWriter_fourcc(*'DIVX'),15,size);
 
     int ii = 0;
     while(ii<100){
@@ -261,10 +261,10 @@ void demo(char *cfgfile, char *weightfile, float thresh, int cam_index, const ch
         }else{
             char name[256];
             sprintf(name, "%s_%08d", prefix, count);
-	    image im = buff[(buff_index + 1)%3];
-    	    cv2.Mat imgcv(im.h, im.w, CV_32FC1, im.data);
-	    out.write(imgcv) 
-            //save_image(buff[(buff_index + 1)%3], name);
+	    //image im = buff[(buff_index + 1)%3];
+    	    //cv2.Mat imgcv(im.h, im.w, CV_32FC1, im.data);
+	    //out.write(imgcv) 
+            save_image(buff[(buff_index + 1)%3], name);
         }
         pthread_join(fetch_thread, 0);
         pthread_join(detect_thread, 0);
